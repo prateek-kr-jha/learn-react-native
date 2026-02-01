@@ -4,19 +4,32 @@ import {
   useColorScheme,
   View,
   Text,
+  FlatList
 } from 'react-native';
 import { TodoItem } from './TodoItem';
 import { TodoList } from '../data/TodoList';
 
+
 function TodoContainer() {
-  return (<View style={styles.todoContainer}>
-    {TodoList.map((({ text, completed }) => (
-      <TodoItem
-        text={text}
-        done={completed}
-      />)
-    ))}
-  </View>);
+  // return (<View style={styles.todoContainer}>
+  //   {TodoList.map((({ text, completed }) => (
+  //     <TodoItem
+  //       text={text}
+  //       done={completed}
+  //       key={Math.random() * 1000}
+  //     />)
+  //   ))}
+  // </View>);
+
+  return (
+    <FlatList
+      data={TodoList}
+      renderItem={({item}) => <TodoItem
+        text={item.text}
+        done={item.completed}
+        /> }
+    />
+  )
 }
 
 const styles = StyleSheet.create({
