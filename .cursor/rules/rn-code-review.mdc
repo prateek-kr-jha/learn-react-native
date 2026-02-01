@@ -1,0 +1,22 @@
+---
+description: React Native code review checklist from RN_PROJECT_CONTEXT
+globs: react-native/**/*.js,react-native/**/*.jsx
+alwaysApply: false
+---
+
+# React Native Code Review
+
+Use when reviewing code. Reference: `react-native/RN_PROJECT_CONTEXT.md`
+
+## Checklist
+- [ ] Separation of concerns: no API logic in UI components
+- [ ] API calls in `api/`; storage in `storage/`
+- [ ] Tight coupling or unclear logic ownership flagged
+- [ ] Error handling: API failures, loading, empty states
+- [ ] No hardcoded secrets; env config safe
+- [ ] Prefer clear explanations; no unnecessary rewrites
+
+## Output Format
+- **Critical** (must fix)
+- **Warnings** (should fix)
+- **Suggestions** (consider)
