@@ -1,0 +1,27 @@
+---
+description: API layer conventions - axios, error handling
+globs: "**/api/**/*.js"
+alwaysApply: false
+---
+
+# API Layer Standards
+
+## Structure
+- All network calls in `api/` directory
+- Use Axios for HTTP
+- Centralized axios config (base URL, interceptors)
+
+## Error Handling
+```javascript
+// ✅ Handle failures explicitly
+try {
+  const response = await api.get('/endpoint');
+  return response.data;
+} catch (error) {
+  // Log, transform, rethrow or return safe default
+  throw new ApiError('Failed to fetch', { cause: error });
+}
+```
+
+## No API Logic in Components
+Components call functions from `api/`; they do not import axios directly for business calls.

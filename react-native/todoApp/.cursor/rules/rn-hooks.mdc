@@ -1,0 +1,25 @@
+---
+description: Custom hooks conventions
+globs: "**/hooks/**/*.js"
+alwaysApply: false
+---
+
+# Hooks Standards
+
+## Rules of Hooks
+- Only call hooks at top level (no conditionals, loops)
+- Only call from React function components or custom hooks
+
+## Side Effects
+- Use useEffect for side effects
+- Explicit dependencies array
+- Cleanup (return function) for subscriptions, timers, listeners
+
+## Example
+```javascript
+// ✅ Explicit cleanup
+useEffect(() => {
+  const subscription = something.subscribe();
+  return () => subscription.unsubscribe();
+}, [deps]);
+```

@@ -1,0 +1,33 @@
+---
+description: Core React Native coding standards (always apply)
+globs: 
+alwaysApply: true
+---
+
+# React Native Standards
+
+Reference: `../RN_PROJECT_CONTEXT.md`
+
+## Technology Stack
+- React Native CLI (no Expo), JavaScript (not TypeScript)
+- Functional components, React Hooks
+- React Navigation, Axios, AsyncStorage
+
+## Structure
+- UI components: no API logic
+- API calls: dedicated `api/` layer
+- Storage: abstracted in `storage/`
+- Navigation: centralized in `navigation/`
+
+## State & Hooks
+- Prefer local state first; lift only when needed
+- Hooks must follow rules of hooks; side effects explicit; cleanup where applicable
+- Use FlatList for lists; avoid inline functions/styles when harmful
+
+## Error Handling
+- API failures: graceful handling
+- Loading, empty, permission-denied states
+- No unexplained crashes
+
+## Principle
+Prefer boring, readable, production-safe code over clever abstractions.
