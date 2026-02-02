@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
-  View,
-  Text,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { FilterButton } from './FilterButton';
+import { colors } from '../utils/colors';
+import { layout } from '../utils/layout';
 
 
 export type FilterType = 'all' | 'pending' | 'completed';
@@ -38,23 +34,17 @@ function Filter() {
 const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
-    bottom: 24,
+    bottom: layout.filterBar.bottom,
     alignSelf: 'center',
-
     flexDirection: 'row',
-    backgroundColor: '#F5F5F5',
-    padding: 6,
-    borderRadius: 999,
-
-    width: '90%', // controls equal-width tabs
-
-    // iOS shadow
-    shadowColor: '#000',
+    backgroundColor: colors.background,
+    padding: layout.filterBar.padding,
+    borderRadius: layout.radii.pill,
+    width: layout.screenWidth * layout.filterBar.widthPercent,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.08,
     shadowRadius: 12,
-
-    // Android shadow
     elevation: 6,
   },
 });

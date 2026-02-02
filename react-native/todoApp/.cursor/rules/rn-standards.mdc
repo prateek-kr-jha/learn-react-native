@@ -9,7 +9,7 @@ alwaysApply: true
 Reference: `../RN_PROJECT_CONTEXT.md`
 
 ## Technology Stack
-- React Native CLI (no Expo), JavaScript (not TypeScript)
+- React Native CLI (no Expo), TypeScript (not JavaScript)
 - Functional components, React Hooks
 - React Navigation, Axios, AsyncStorage
 

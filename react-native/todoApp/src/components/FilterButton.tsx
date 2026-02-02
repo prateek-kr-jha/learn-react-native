@@ -15,6 +15,8 @@
 // A filter can only be one of the allowed options — nothing else
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { FilterType } from './Filter';
+import { colors } from '../utils/colors';
+import { layout } from '../utils/layout';
 
 type FilterButtonProps = {
   label: string;
@@ -44,28 +46,27 @@ export function FilterButton({
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 8,
-    // paddingHorizontal: 16,
-    borderRadius: 999,
-    backgroundColor: '#E5E7EB', // light grey
+    paddingVertical: layout.spacing.sm,
+    minHeight: layout.heights.filterButton,
+    borderRadius: layout.radii.pill,
+    backgroundColor: colors.filterInactive,
     justifyContent: 'center',
-    alignContent: 'center',
-    // width: '30%'
+    alignItems: 'center',
   },
   activeButton: {
-    backgroundColor: '#111827', // dark
+    backgroundColor: colors.primary,
   },
   text: {
-    color: '#374151',
+    color: colors.filterInactiveText,
     fontWeight: '500',
-    fontSize: 12,
+    fontSize: layout.fontSizes.filter,
     textAlign: 'center',
   },
   activeText: {
-    color: '#FFFFFF',
+    color: colors.primaryText,
   },
   tabWrapper: {
     flex: 1,
-    paddingHorizontal: 4,
+    paddingHorizontal: layout.spacing.xs,
   },
 });

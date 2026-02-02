@@ -20,6 +20,11 @@ export function TodoItem({text, done}) {
             textStyle={{    marginLeft: 1,
               color: '#111827',
               fontSize: 16,}}
+            innerIconStyle= {{
+                borderRadius: 5,
+                borderColor: '#CCCCCC',
+                width: 24
+            }}
             />
             
         </View>
@@ -30,14 +35,15 @@ const styles = StyleSheet.create({
   todoItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F0F8A4',
+    // backgroundColor: '#F0F8A4',
     width: '100%',
     paddingVertical: 12,
     marginVertical: 6,
-    borderWidth: 1,
-    borderColor: 'black',
+    // borderWidth: 1,
+    // borderColor: 'black',
     minHeight: 50,
-    paddingLeft: 15
+    paddingLeft: 15,
+    
   },
   
 
