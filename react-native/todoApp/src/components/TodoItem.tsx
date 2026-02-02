@@ -9,14 +9,15 @@ import {
 } from 'react-native';
 
 
-export function TodoItem({text, done, created_dt}) {
+export function TodoItem({text, done, created_dt, uniqueId, onToggle}) {
   const [checkStatus, setCheckStatus] = useState(done);
 
     return (
       <View style={styles.todoItem}>
         <BouncyCheckbox
-          onPress={(isChecked: boolean) => {
+          onPress={(key) => {
             setCheckStatus(!checkStatus);
+            onToggle(uniqueId)
           }}
           disableText
           text={text}
