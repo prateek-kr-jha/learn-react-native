@@ -9,7 +9,7 @@ function TodoContainer() {
       data={TodoList}
       keyExtractor={(item, index) => String(index)}
       renderItem={({ item }) => (
-        <TodoItem text={item.text} done={item.completed} />
+        <TodoItem text={item.text} done={item.completed} created_dt={item.created_dt} />
       )}
       contentContainerStyle={styles.listContent}
     />

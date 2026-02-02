@@ -9,42 +9,63 @@ import {
 } from 'react-native';
 
 
-export function TodoItem({text, done}) {
+export function TodoItem({text, done, created_dt}) {
+  const [checkStatus, setCheckStatus] = useState(done);
 
     return (
-        <View style={styles.todoItem}>
-            <BouncyCheckbox onPress={(isChecked: boolean) => {
-                console.log(isChecked);
-            }}
-            text={text}
-            textStyle={{    marginLeft: 1,
-              color: '#111827',
-              fontSize: 16,}}
-            innerIconStyle= {{
-                borderRadius: 5,
-                borderColor: '#CCCCCC',
-                width: 24
-            }}
-            />
-            
+      <View style={styles.todoItem}>
+        <BouncyCheckbox
+          onPress={(isChecked: boolean) => {
+            setCheckStatus(!checkStatus);
+          }}
+          disableText
+          text={text}
+          isChecked={checkStatus}
+          textStyle={{
+            marginLeft: 1,
+            color: '#111827',
+            fontSize: 16,
+          }}
+          innerIconStyle={styles.iconStyle}
+          iconStyle={
+            checkStatus ? styles.innerIconChecked : styles.innerIconUnchecked
+          }
+        />
+        <View>
+            <Text>{text}</Text>
+            <Text>{created_dt}</Text>
         </View>
-    )
+      </View>
+    );
 }
 
 const styles = StyleSheet.create({
   todoItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: '#F0F8A4',
+    
     width: '100%',
     paddingVertical: 12,
     marginVertical: 6,
-    // borderWidth: 1,
-    // borderColor: 'black',
+    flex: 1,
     minHeight: 50,
     paddingLeft: 15,
-    
   },
-  
+  innerIconChecked: {
+    borderRadius: 5,
+    borderColor: '#CCCCCC',
+    width: 24,
+    backgroundColor: '#20B2AA',
+  },
+  innerIconUnchecked: {
+    borderRadius: 5,
+    borderColor: '#CCCCCC',
+    width: 24,
 
+  },
+  iconStyle: {
+    borderRadius: 5,
+    borderColor: '#CCCCCC',
+    width: 24,
+  },
 });
