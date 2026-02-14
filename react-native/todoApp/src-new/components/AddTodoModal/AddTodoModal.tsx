@@ -1,5 +1,7 @@
- import { View, Modal, StyleSheet, Alert, Text, Pressable } from 'react-native';
+ import { useState } from 'react';
+import { View, Modal, StyleSheet, Alert, Text, Pressable, Button } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
  
 //   {
 //     id: 3,
@@ -9,8 +11,18 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 //     due_dt: currentDate,
 //   },
 
- function AddTodoModal({ showModal, toggleModalVisibility }) {
+ function AddTodoModal({ showModal, toggleModalVisibility, addTodo }) {
    const safeInset = useSafeAreaInsets();
+   const [todoTitle, setTodoTitle] = useState('');
+   const [completedStatus, setCompletedStatus] = useState(false);
+   const [createdDt, setCreatedDt] = useState(Date.now());
+   const [dueDt, setDueDt] = useState(Date.now());
+    const todo = {
+        text: 'there',
+        completed: true,
+        created_dt: createdDt,
+        due_dt: dueDt
+    }
    return (
      <Modal
        animationType="slide"
@@ -28,7 +40,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
            },
          ]}
        >
-         <View style={{ width: '100%', height: '30', backgroundColor: 'grey' }}>
+         <View style={{ height: '30', backgroundColor: 'grey' }}>
            <Pressable
              onPress={toggleModalVisibility}
              style={styles.cancelButton}
@@ -37,7 +49,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
            </Pressable>
          </View>
          <View style={styles.modal}>
-           <Text>
+           {/* <Text>
              In convallis faucibus felis, eget blandit nisi. Phasellus facilisis
              neque nec aliquet volutpat. Aliquam justo magna, fringilla at
              mattis a, venenatis et tellus. Etiam nec maximus turpis, sed
@@ -46,7 +58,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
              gravida dui. Cras egestas varius quam, eget tempor lorem
              sollicitudin sed. Morbi aliquam ipsum eget tortor accumsan
              malesuada vitae quis nulla.
-           </Text>
+           </Text> */}
+           <Button title='add' onPress={() => {
+            addTodo(todo)
+            toggleModalVisibility()
+            }} />
          </View>
        </View>
      </Modal>

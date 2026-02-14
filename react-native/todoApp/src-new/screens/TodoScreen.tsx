@@ -41,13 +41,15 @@ function TodoScreen() {
   const toggleModalVisibility = () => {
     setShowModal(!showModal)
   }
-  const addTodo = () => {
-
+  const addTodo = (newTodo) => {
+    const id = todoListData.length;
+    newTodo.id = id;
+    setTodoListData([...todoListData, newTodo])
   }
   return (
     <View style={styles.container}>
       <Header openModal={() => setShowModal(!showModal)} />
-      <AddTodoModal showModal={showModal} toggleModalVisibility={toggleModalVisibility} />
+      <AddTodoModal showModal={showModal} toggleModalVisibility={toggleModalVisibility} addTodo={addTodo} />
       <TodoList
         toggleTodoStatus={toggleTodoStatus}
         todoList={todoListData}
