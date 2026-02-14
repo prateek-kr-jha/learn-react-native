@@ -2,7 +2,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { colors } from '../utils/colors';
 import { layout } from '../utils/layout';
 
-function Header() {
+function Header({onAdd, todoList }) {
   const addSize = layout.iconSizes.addButton;
   return (
     <View style={styles.header}>
@@ -10,10 +10,13 @@ function Header() {
         <Text style={styles.title}>Tasks</Text>
         <Text style={styles.subtitle}>October 15</Text>
       </View>
-      <View style={[styles.iconBox, { width: addSize, height: addSize, borderRadius: addSize / 2 }]} />
+      <Text style={[styles.iconBox, { width: addSize, height: addSize, borderRadius: addSize / 2 }]} >
+      +
+      </Text>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   header: {
@@ -41,7 +44,16 @@ const styles = StyleSheet.create({
     marginTop: layout.spacing.xs / 2,
   },
   iconBox: {
-    backgroundColor: colors.primary,
+    backgroundColor: 'black',
+    color: 'white',
+    fontSize: 32,
+    fontWeight: 'bold',
+    display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    borderColor: 'grey',
+    // borderWidth: 10,
+    textAlign: 'center'
   },
 });
 

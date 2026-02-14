@@ -1,10 +1,9 @@
 import { StyleSheet, FlatList } from 'react-native';
 import { TodoItem } from './TodoItem';
-import { TodoList } from '../data/TodoList';
-import { layout } from '../utils/layout';
+import { layout } from '../../utils/layout';
 import { useState } from 'react';
 
-function TodoContainer({toggleTodoStatus, todoList}) {
+function TodoContainer({todoList, toggleTodoStatus}) {
   
   console.log(todoList, "-------------")
 
@@ -13,7 +12,7 @@ function TodoContainer({toggleTodoStatus, todoList}) {
       data={todoList}
       keyExtractor={(item, index) => String(index)}
       renderItem={({ item }) => (
-        <TodoItem text={item.text} done={item.completed} created_dt={item.created_dt} uniqueId={item.id} key={item.id} toggleTodoStatus={toggleTodoStatus} />
+        <TodoItem text={item.text} done={item.completed} created_dt={item.created_dt} toggleTodoStatus={toggleTodoStatus} uniqueId={item.id} />
       )}
       contentContainerStyle={styles.listContent}
     />

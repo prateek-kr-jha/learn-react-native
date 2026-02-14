@@ -16,9 +16,13 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { useState } from 'react';
 import Filter from './src/components/Filter';
 import Header from './src/components/Header';
-import TodoContainer from './src/components/TodoList';
+import TodoContainer from './src/components/TodoList'; 
+// import { TodoList } from './src/data/TodoList'
+import  TodoScreen from './src-new/screens/TodoScreen';
+
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,40 +30,10 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <TodoScreen />
     </SafeAreaProvider>
   );
 }
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View
-      style={[
-        styles.container,
-        {
-          paddingTop: safeAreaInsets.top,
-          paddingBottom: safeAreaInsets.bottom,
-        },
-      ]}
-    >
-      <Header />
-      <TodoContainer />
-      <Filter />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#F5F5F5',
-  },
-});
 
 export default App;
