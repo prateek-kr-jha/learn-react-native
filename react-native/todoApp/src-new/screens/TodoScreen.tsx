@@ -47,7 +47,7 @@ function TodoScreen() {
   return (
     <View style={styles.container}>
       <Header openModal={() => setShowModal(!showModal)} />
-      <AddTodoModal showModal={showModal} />
+      <AddTodoModal showModal={showModal} toggleModalVisibility={toggleModalVisibility} />
       <TodoList
         toggleTodoStatus={toggleTodoStatus}
         todoList={todoListData}
