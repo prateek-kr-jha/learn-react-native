@@ -1,6 +1,7 @@
  import { useState } from 'react';
-import { View, Modal, StyleSheet, Alert, Text, Pressable, Button } from 'react-native';
+import { View, Modal, StyleSheet, Alert, Text, Pressable, Button, TextInput } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+// import {  } from 'react-native/types_generated/index';
 
  
 //   {
@@ -15,14 +16,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
    const safeInset = useSafeAreaInsets();
    const [todoTitle, setTodoTitle] = useState('');
    const [completedStatus, setCompletedStatus] = useState(false);
-   const [createdDt, setCreatedDt] = useState(Date.now());
-   const [dueDt, setDueDt] = useState(Date.now());
-    const todo = {
-        text: 'there',
-        completed: true,
-        created_dt: createdDt,
-        due_dt: dueDt
-    }
+   const [createdDt, setCreatedDt] = useState(Date());
+   const [dueDt, setDueDt] = useState(Date());
+    // const todo = {
+    //     text: 'there',
+    //     completed: true,
+    //     created_dt: createdDt,
+    //     due_dt: dueDt
+    // }
    return (
      <Modal
        animationType="slide"
@@ -49,18 +50,17 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
            </Pressable>
          </View>
          <View style={styles.modal}>
-           {/* <Text>
-             In convallis faucibus felis, eget blandit nisi. Phasellus facilisis
-             neque nec aliquet volutpat. Aliquam justo magna, fringilla at
-             mattis a, venenatis et tellus. Etiam nec maximus turpis, sed
-             convallis lacus. Ut nec ipsum fringilla, sollicitudin mauris non,
-             suscipit sapien. Donec dui velit, scelerisque non lorem id, rutrum
-             gravida dui. Cras egestas varius quam, eget tempor lorem
-             sollicitudin sed. Morbi aliquam ipsum eget tortor accumsan
-             malesuada vitae quis nulla.
-           </Text> */}
+            <TextInput onChangeText={setTodoTitle} style={styles.input} value={todoTitle} />
+            <TextInput onChangeText={setTodoTitle} style={styles.input} value={todoTitle} />
+            {/* <TextInput onChange={setDueDt} style={styles.input} value={dueDt} /> */}
            <Button title='add' onPress={() => {
-            addTodo(todo)
+            addTodo({
+              text: todoTitle,
+              completed: completedStatus,
+              created_dt: createdDt,
+              due_dt: dueDt
+            })
+            setTodoTitle('')
             toggleModalVisibility()
             }} />
          </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
 
-  justifyContent: 'center',
+  justifyContent: 'space-around',
   alignItems: 'center',
     backgroundColor: "#777777",
     
@@ -92,7 +92,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     
 
-  }
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: '80%'
+  },
 });
 
 export default AddTodoModal;
